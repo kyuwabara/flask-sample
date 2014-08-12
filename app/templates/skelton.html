@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block title %}{% endblock %}
 
-{% block contents %}<h1>Hello, it works.</h1>{% endblock %}
+{% block contents %}
+{% if user.is_authenticated() %}
+{% set email = user.email %}
+{% else %}
+{% set email = "guest" %}
+{% endif %}
+<h1>Hello, {{ email }}</h1>
+{% endblock %}
 
 {% block localscript %}{% endblock %}
